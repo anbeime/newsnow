@@ -1,4 +1,12 @@
 {
+  "youtube": {
+    "name": "YouTube",
+    "type": "hottest",
+    "column": "tech",
+    "home": "https://www.youtube.com",
+    "color": "red",
+    "interval": 600000
+  },
   "v2ex": {
     "redirect": "v2ex-share",
     "name": "V2EX",

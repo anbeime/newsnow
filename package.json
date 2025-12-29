@@ -1,20 +1,24 @@
 {
   "name": "newsnow",
   "type": "module",
-  "version": "0.0.26",
+  "version": "0.0.36",
   "private": true,
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748",
   "author": {
-    "url": "https://github.com/ourongxing/",
+    "url": "https://github.com/anbeime/",
     "email": "orongxing@gmail.com",
     "name": "ourongxing"
   },
-  "homepage": "https://github.com/ourongxing/newsnow",
+  "homepage": "https://github.com/anbeime/newsnow",
   "scripts": {
     "dev": "npm run presource && vite dev",
+    "dev:with-proxy": "concurrently \"npm run youtube-proxy\" \"npm run presource && vite dev\"",
     "build": "npm run presource && vite build",
     "lint": "eslint",
     "presource": "tsx ./scripts/favicon.ts && tsx ./scripts/source.ts",
+    "youtube-proxy": "node youtube-proxy-server.js",
+    "youtube-proxy:dev": "nodemon --exec node youtube-proxy-server.js",
+    "build:worker": "esbuild cloudflare-worker.ts --bundle --format=esm --outfile=dist/index.mjs",
     "start": "node --env-file .env.server dist/output/server/index.mjs",
     "preview": "cross-env CF_PAGES=1 npm run build && wrangler pages dev dist/output/public",
     "deploy": "cross-env CF_PAGES=1 npm run build && wrangler pages deploy dist/output/public",
@@ -30,11 +34,12 @@
     "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.0.3",
     "@formkit/auto-animate": "^0.8.2",
     "@iconify-json/si": "^1.2.3",
+    "@modelcontextprotocol/sdk": "^1.11.0",
     "@tanstack/react-query-devtools": "^5.66.11",
     "@tanstack/react-router": "^1.112.0",
     "@unocss/reset": "^66.0.0",
     "ahooks": "^3.8.4",
-    "better-sqlite3": "^11.8.1",
+    "better-sqlite3": "^11.10.0",
     "cheerio": "^1.0.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
@@ -54,6 +59,7 @@
     "overlayscrollbars": "^2.11.1",
     "pnpm": "^10.5.2",
     "react": "^19.0.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
     "react-use": "^17.6.0",
     "uncrypto": "^0.1.3",
@@ -75,6 +81,7 @@
     "@unocss/rule-utils": "^66.0.0",
     "@vitejs/plugin-react-swc": "^3.8.0",
     "bumpp": "^10.0.3",
+    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
     "eslint": "^9.21.0",
@@ -85,6 +92,7 @@
     "lint-staged": "^15.4.3",
     "mlly": "^1.7.4",
     "mockdate": "^3.0.5",
+    "nodemon": "^3.1.7",
     "pnpm-patch-i": "^0.4.1",
     "rollup": "^4.34.8",
     "simple-git-hooks": "^2.11.1",
@@ -99,7 +107,7 @@
     "vitest": "^3.0.7",
     "workbox-build": "^7.3.0",
     "workbox-window": "^7.3.0",
-    "wrangler": "^3.111.0"
+    "wrangler": "4.14.1"
   },
   "pnpm": {
     "patchedDependencies": {
@@ -109,20 +117,24 @@
       "@napi-rs/pinyin",
       "@parcel/watcher",
       "@swc/core",
-      "better-sqlite3",
       "esbuild",
+      "better-sqlite3",
       "sharp",
       "simple-git-hooks",
+      "unrs-resolver",
       "workerd"
     ]
   },
   "resolutions": {
     "cross-spawn": ">=7.0.6",
     "dayjs": "1.11.13",
+    "nitropack": "npm:nitro-go@0.0.3",
     "picomatch": "^4.0.2",
     "react": "^19",
     "db0": "^0.3.1",
-    "vite": "^6"
+    "vite": "^6",
+    "h3": "1.15.4",
+    "h3-nightly": "1.15.4"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
