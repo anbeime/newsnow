@@ -19,6 +19,7 @@ export const originSources = {
     column: "tech",
     color: "red",
     home: "https://www.youtube.com",
+    disable: "cf",
   },
   "v2ex": {
     name: "V2EX",
