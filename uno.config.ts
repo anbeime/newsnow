@@ -6,7 +6,7 @@ import {
   transformerVariantGroup,
 } from "unocss"
 import { hex2rgba } from "@unocss/rule-utils"
-import { sources } from "./shared/sources"
+import { sources } from "./shared/sources.ts"
 
 export default defineConfig({
   mergeSelectors: false,
