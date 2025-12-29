@@ -459,6 +459,7 @@ export const originSources = {
     color: "green",
     type: "hottest",
     home: "https://www.freebuf.com/",
+    disable: true,
   },
 
   "qqvideo": {

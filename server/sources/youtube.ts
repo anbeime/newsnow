@@ -1,57 +1,43 @@
-import { myFetch } from "#/utils/fetch"
-import { defineSource } from "#/utils/source"
+import type { NewsItem } from "@shared/types"
 
 export default defineSource(async () => {
   try {
+    console.log("正在获取 YouTube 热门视频...")
     const invidiousInstances = [
       "https://invidious.snopyta.org",
       "https://invidious.kavin.rocks",
-      "https://inv.nadeko.net",
-      "https://inv.puffyan.us",
-      "https://invidious.perennialte.ch",
-      "https://yewtu.be",
+      "https://invidious.namazso.eu",
+      "https://invidious.projectsegfau.lt",
+      "https://inv.bp.projectsegfau.lt",
+      "https://inv.vern.cc",
+      "https://invidious.flokinet.to",
+      "https://invidious.esmailelbob.xyz",
     ]
 
-    for (const instance of invidiousInstances) {
-      try {
-        const response: any = await myFetch(`${instance}/api/v1/trending`, {
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            "Accept": "application/json",
-          },
-        })
+    const randomInstance
+      = invidiousInstances[Math.floor(Math.random() * invidiousInstances.length)]
+    const response: any = await myFetch(`${randomInstance}/api/v1/trending`)
 
-        if (!Array.isArray(response)) continue
+    const news: NewsItem[] = []
 
-        const news = response
-          .slice(0, 30)
-          .map((video: any) => {
-            if (video.videoId && video.title) {
-              return {
-                id: video.videoId,
-                title: video.title,
-                url:
-                  video.url
-                  || `https://www.youtube.com/watch?v=${video.videoId}`,
-                pubDate:
-                  (video.published || Math.floor(Date.now() / 1000)) * 1000,
-                extra: {
-                  info: `👁 ${video.viewCountText || video.viewCount || 0}`,
-                },
-              }
-            }
-            return null
+    if (Array.isArray(response)) {
+      response.slice(0, 30).forEach((video: any) => {
+        if (video.videoId && video.title) {
+          news.push({
+            id: video.videoId,
+            title: video.title,
+            url:
+              video.url || `https://www.youtube.com/watch?v=${video.videoId}`,
+            pubDate: (video.published || Math.floor(Date.now() / 1000)) * 1000,
+            extra: {
+              info: `👁 ${video.viewCountText || video.viewCount || 0}`,
+            },
           })
-          .filter(Boolean)
-
-        if (news.length > 0) return news
-      } catch {
-        continue
-      }
+        }
+      })
     }
 
-    return []
+    return news
   } catch (error) {
     console.error("YouTube 获取错误:", error)
     return []
