@@ -1,5 +1,6 @@
 export default defineSource(async () => {
   try {
+    console.log("正在获取 YouTube 热门视频...")
     const invidiousInstances = [
       "https://invidious.perennialte.ch",
       "https://inv.nadeko.net",
@@ -9,6 +10,7 @@ export default defineSource(async () => {
 
     for (const instance of invidiousInstances) {
       try {
+        console.log(`尝试连接: ${instance}`)
         const response: any = await myFetch(`${instance}/api/v1/trending`, {
           headers: {
             "User-Agent":
@@ -17,7 +19,13 @@ export default defineSource(async () => {
           },
         })
 
-        if (!Array.isArray(response)) continue
+        console.log(`${instance} 响应类型:`, typeof response)
+        console.log(`${instance} 是否为数组:`, Array.isArray(response))
+
+        if (!Array.isArray(response)) {
+          console.log(`${instance} 响应不是数组，继续下一个实例`)
+          continue
+        }
 
         const news = response
           .slice(0, 30)
@@ -40,12 +48,15 @@ export default defineSource(async () => {
           })
           .filter(Boolean)
 
+        console.log(`${instance} 获取到 ${news.length} 条数据`)
         if (news.length > 0) return news
-      } catch {
+      } catch (error) {
+        console.log(`${instance} 失败:`, error)
         continue
       }
     }
 
+    console.log("所有 Invidious 实例都失败了")
     return []
   } catch (error) {
     console.error("YouTube 获取错误:", error)
