@@ -1,3 +1,5 @@
-import { defineRSSHubSource } from "#/utils/source"
+import { defineRSSSource } from "#/utils/source"
 
-export default defineRSSHubSource("/youtube/trending")
+export default defineRSSSource(
+  "https://rsshub.rssforever.com/youtube/trending",
+)
