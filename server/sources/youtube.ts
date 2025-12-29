@@ -1,45 +1,50 @@
-import type { NewsItem } from "@shared/types"
+import { defineSource } from "#/utils/source"
+
+interface ProxyResponse {
+  success: boolean
+  data: VideoData[]
+  count: number
+  timestamp: string
+}
+
+interface VideoData {
+  videoId: string
+  title: string
+  author: string
+  authorId: string
+  viewCount: number
+  viewCountText: string
+  published: number
+  publishedText: string
+  lengthSeconds: number
+  url: string
+  invidious_url: string
+}
+
+const PROXY_URL
+  = "https://hotnow-youtube-proxy.13632833907.workers.dev/api/youtube/trending"
 
 export default defineSource(async () => {
-  try {
-    console.log("正在获取 YouTube 热门视频...")
-    const invidiousInstances = [
-      "https://invidious.snopyta.org",
-      "https://invidious.kavin.rocks",
-      "https://invidious.namazso.eu",
-      "https://invidious.projectsegfau.lt",
-      "https://inv.bp.projectsegfau.lt",
-      "https://inv.vern.cc",
-      "https://invidious.flokinet.to",
-      "https://invidious.esmailelbob.xyz",
-    ]
+  const response = await myFetch<ProxyResponse>(PROXY_URL, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    },
+  })
 
-    const randomInstance
-      = invidiousInstances[Math.floor(Math.random() * invidiousInstances.length)]
-    const response: any = await myFetch(`${randomInstance}/api/v1/trending`)
-
-    const news: NewsItem[] = []
-
-    if (Array.isArray(response)) {
-      response.slice(0, 30).forEach((video: any) => {
-        if (video.videoId && video.title) {
-          news.push({
-            id: video.videoId,
-            title: video.title,
-            url:
-              video.url || `https://www.youtube.com/watch?v=${video.videoId}`,
-            pubDate: (video.published || Math.floor(Date.now() / 1000)) * 1000,
-            extra: {
-              info: `👁 ${video.viewCountText || video.viewCount || 0}`,
-            },
-          })
-        }
-      })
-    }
-
-    return news
-  } catch (error) {
-    console.error("YouTube 获取错误:", error)
-    return []
-  }
+  return response.data.slice(0, 50).map(video => ({
+    id: video.videoId,
+    title: video.title,
+    url: video.url,
+    extra: {
+      info: formatViews(video.viewCount),
+      hover: video.author,
+    },
+  }))
 })
+
+function formatViews(views: number): string {
+  if (views >= 1_000_000) return `${(views / 1_000_000).toFixed(1)}M`
+  if (views >= 1_000) return `${(views / 1_000).toFixed(1)}K`
+  return String(views)
+}

@@ -18,12 +18,13 @@ interface Video {
 
 async function fetchYouTubeTrending(): Promise<Video[]> {
   const INVIDIOUS_INSTANCES = [
-    "https://invidious.snopyta.org",
-    "https://invidious.kavin.rocks",
-    "https://inv.nadeko.net",
-    "https://inv.puffyan.us",
     "https://invidious.perennialte.ch",
+    "https://invidious.snopyta.org",
+    "https://inv.nadeko.net",
+    "https://invidious.kavin.rocks",
     "https://yewtu.be",
+    "https://yewtu.be",
+    "https://invidious.nerdvpn.de",
   ]
 
   for (const instance of INVIDIOUS_INSTANCES) {
@@ -37,7 +38,10 @@ async function fetchYouTubeTrending(): Promise<Video[]> {
         },
       })
 
-      if (!response.ok) continue
+      if (!response.ok) {
+        console.warn(`${instance} returned ${response.status}`)
+        continue
+      }
 
       const contentType = response.headers.get("content-type") || ""
 
@@ -56,22 +60,28 @@ async function fetchYouTubeTrending(): Promise<Video[]> {
         continue
       }
 
-      const videos: Video[] = JSON.parse(text)
+      try {
+        const videos: Video[] = JSON.parse(text)
 
-      if (Array.isArray(videos) && videos.length > 0) {
-        return videos.slice(0, 50).map(video => ({
-          videoId: video.videoId,
-          title: video.title,
-          author: video.author,
-          authorId: video.authorId,
-          viewCount: video.viewCount || 0,
-          viewCountText: String(video.viewCount || 0),
-          published: video.published || 0,
-          publishedText: "",
-          lengthSeconds: video.lengthSeconds || 0,
-          url: `https://www.youtube.com/watch?v=${video.videoId}`,
-          invidious_url: `${instance}/watch?v=${video.videoId}`,
-        }))
+        if (Array.isArray(videos) && videos.length > 0) {
+          console.log(`Successfully fetched from ${instance}`)
+          return videos.slice(0, 50).map(video => ({
+            videoId: video.videoId,
+            title: video.title,
+            author: video.author,
+            authorId: video.authorId,
+            viewCount: video.viewCount || 0,
+            viewCountText: String(video.viewCount || 0),
+            published: video.published || 0,
+            publishedText: "",
+            lengthSeconds: video.lengthSeconds || 0,
+            url: `https://www.youtube.com/watch?v=${video.videoId}`,
+            invidious_url: `${instance}/watch?v=${video.videoId}`,
+          }))
+        }
+      } catch (parseError) {
+        console.warn(`JSON parse error from ${instance}:`, parseError)
+        continue
       }
     } catch (error) {
       console.warn(`Failed to fetch from ${instance}:`, error)
