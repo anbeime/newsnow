@@ -13,6 +13,13 @@ const Time = {
 }
 
 export const originSources = {
+  "youtube": {
+    name: "YouTube",
+    type: "hottest",
+    column: "tech",
+    color: "red",
+    home: "https://www.youtube.com",
+  },
   "v2ex": {
     name: "V2EX",
     color: "slate",
@@ -465,7 +472,6 @@ export const originSources = {
         type: "hottest",
         interval: Time.Common,
         home: "https://v.qq.com/channel/tv",
-
       },
     },
   },

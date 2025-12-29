@@ -8,19 +8,39 @@ import { originSources } from "../shared/pre-sources"
 
 const projectDir = fileURLToPath(new URL("..", import.meta.url))
 const iconsDir = join(projectDir, "public", "icons")
-async function downloadImage(url: string, outputPath: string, id: string) {
-  try {
-    const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error(`${id}: could not fetch ${url}, status: ${response.status}`)
-    }
 
-    const image = await (await fetch(url)).arrayBuffer()
-    fs.writeFileSync(outputPath, Buffer.from(image))
-    consola.success(`${id}: downloaded successfully.`)
-  } catch (error) {
-    consola.error(`${id}: error downloading the image. `, error)
+async function downloadIconWithFallback(
+  domain: string,
+  outputPath: string,
+  id: string,
+) {
+  const sources = [
+    `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+    `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
+    `https://favicon.yandex.net/favicon/${domain}`,
+  ]
+
+  for (const url of sources) {
+    try {
+      const response = await fetch(url, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        },
+      })
+      if (response.ok) {
+        const image = await response.arrayBuffer()
+        fs.writeFileSync(outputPath, Buffer.from(image))
+        consola.success(`${id}: downloaded from ${url}`)
+        return true
+      }
+    } catch {
+      continue
+    }
   }
+
+  consola.error(`${id}: failed to download from all sources`)
+  return false
 }
 
 async function main() {
@@ -33,7 +53,10 @@ async function main() {
           return
         }
         if (!source.home) return
-        await downloadImage(`https://icons.duckduckgo.com/ip3/${source.home.replace(/^https?:\/\//, "").replace(/\/$/, "")}.ico`, icon, id)
+        const domain = source.home
+          .replace(/^https?:\/\//, "")
+          .replace(/\/$/, "")
+        await downloadIconWithFallback(domain, icon, id)
       } catch (e) {
         consola.error(id, "\n", e)
       }
