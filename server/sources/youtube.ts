@@ -1,3 +1,4 @@
+import process from "node:process"
 import type { NewsItem } from "@shared/types"
 import { myFetch } from "#/utils/fetch"
 import { defineSource } from "#/utils/source"
@@ -5,6 +6,24 @@ import { defineSource } from "#/utils/source"
 export default defineSource(async () => {
   console.log("正在获取 YouTube 热门视频...")
   try {
+    const proxyUrl = process.env.YOUTUBE_PROXY_URL
+
+    if (proxyUrl) {
+      console.log(`使用代理: ${proxyUrl}`)
+      const response: any = await myFetch(proxyUrl, {
+        headers: {
+          Accept: "application/json",
+        },
+      })
+
+      if (response?.success && Array.isArray(response.data)) {
+        console.log(`通过代理获取到 ${response.data.length} 条数据`)
+        return response.data
+      }
+
+      console.log("代理请求失败，使用备用方法")
+    }
+
     const invidiousInstances = [
       "https://invidious.snopyta.org",
       "https://invidious.kavin.rocks",
