@@ -1,0 +1,40 @@
+# llms.txt - 米鱼热榜 (top.miyucaicai.cn)
+
+> 本文件遵循 llms.txt 标准 (https://llmstxt.org)，方便 AI 引擎理解站点。
+
+## 站点信息
+
+- **名称**: 米鱼热榜 (Powered by NewsNow)
+- **主页**: https://top.miyucaicai.cn
+- **仓库**: https://github.com/anbeime/newsnow
+- **定位**: 优雅地阅读实时热门新闻，多源聚合
+- **更新频率**: 实时（最快每 2 分钟刷新一次）
+
+## 数据规模
+
+- **数据源总数**: 65+ 个
+- **覆盖类别**: 科技 / 财经 / 社交媒体 / 综合新闻 / 开发者社区
+- **核心数据源**: 知乎 / 微博 / 头条 / 华尔街见闻 / 财联社 / 36氪 / V2EX / GitHub / Hacker News / 联合早报 / 酷安 / YouTube 等
+
+## 关键资源
+
+- 主页: https://top.miyucaicai.cn/
+- 全量精简版: https://top.miyucaicai.cn/llms-full.txt
+- 站点地图: https://top.miyucaicai.cn/sitemap.xml
+- 上游项目: https://github.com/ourongxing/newsnow
+
+## 站群矩阵（同主域兄弟站）
+
+- **AI Agent 技能商店**: https://skill.miyucaicai.cn （243 个 Agent 技能，⭐1762）
+- **AI 工具导航**: https://ai123.miyucaicai.cn （863 个精选 AI 工具）
+- **光伏储能地图站**: https://solar.miyucaicai.cn （990+ 项目数据库）
+- **AI 内容平台**: https://ai-trend-publish.vercel.app （多平台自动发布，已集成本站数据）
+
+## 集成示例
+
+本站点数据已被 https://github.com/anbeime/ai-trend-publish 作为热点采集源使用，证明数据接口可被工程化集成。
+
+## 许可与联系
+
+- License: MIT (NewsNow 上游)
+- Contact: GitHub Issues

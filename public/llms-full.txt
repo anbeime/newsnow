@@ -1,0 +1,230 @@
+# llms-full.txt - 米鱼热榜 全量数据源清单
+
+> 全部 65 个数据源
+> 主页: https://top.miyucaicai.cn
+
+## 分类总览
+
+- china: 26 个
+- tech: 17 个
+- finance: 17 个
+- world: 5 个
+
+---
+
+## china
+
+- **知乎** — https://www.zhihu.com  [hottest]  (每 10 分钟刷新)
+  source_id: `zhihu`
+
+- **微博** / 实时热搜 — https://weibo.com  [hottest]  (每 2 分钟刷新)
+  source_id: `weibo`
+
+- **抖音** — https://www.douyin.com  [hottest]  (每 10 分钟刷新)
+  source_id: `douyin`
+
+- **虎扑** / 主干道热帖 — https://hupu.com  [hottest]  (每 10 分钟刷新)
+  source_id: `hupu`
+
+- **百度贴吧** / 热议 — https://tieba.baidu.com  [hottest]  (每 10 分钟刷新)
+  source_id: `tieba`
+
+- **今日头条** — https://www.toutiao.com  [hottest]  (每 10 分钟刷新)
+  source_id: `toutiao`
+
+- **澎湃新闻** / 热榜 — https://www.thepaper.cn  [hottest]  (每 30 分钟刷新)
+  source_id: `thepaper`
+
+- **哔哩哔哩** / 热搜 — https://www.bilibili.com  [hottest]  (每 10 分钟刷新)
+  source_id: `bilibili`
+
+- **哔哩哔哩** / 热搜 — https://www.bilibili.com  [hottest]  (每 10 分钟刷新)
+  source_id: `bilibili-hot-search`
+
+- **哔哩哔哩** / 热门视频 — https://www.bilibili.com  [hottest]  (每 10 分钟刷新)
+  source_id: `bilibili-hot-video`
+
+- **哔哩哔哩** / 排行榜 — https://www.bilibili.com  [hottest]  (每 30 分钟刷新)
+  source_id: `bilibili-ranking`
+
+- **快手** — https://www.kuaishou.com  [hottest]  (每 10 分钟刷新)
+  source_id: `kuaishou`
+
+- **百度热搜** — https://www.baidu.com  [hottest]  (每 10 分钟刷新)
+  source_id: `baidu`
+
+- **牛客** — https://www.nowcoder.com  [hottest]  (每 10 分钟刷新)
+  source_id: `nowcoder`
+
+- **凤凰网** / 热点资讯 — https://www.ifeng.com  [hottest]  (每 10 分钟刷新)
+  source_id: `ifeng`
+
+- **虫部落** / 最新 — https://www.chongbuluo.com/forum.php?mod=guide&view=newthread  (每 30 分钟刷新)
+  source_id: `chongbuluo`
+
+- **虫部落** / 最新 — https://www.chongbuluo.com/forum.php?mod=guide&view=newthread  (每 30 分钟刷新)
+  source_id: `chongbuluo-latest`
+
+- **虫部落** / 最热 — https://www.chongbuluo.com/forum.php?mod=guide&view=hot  [hottest]  (每 30 分钟刷新)
+  source_id: `chongbuluo-hot`
+
+- **豆瓣** / 热门电影 — https://www.douban.com  [hottest]  (每 10 分钟刷新)
+  source_id: `douban`
+
+- **腾讯新闻** / 综合早报 — https://news.qq.com/tag/aEWqxLtdgmQ=  [hottest]  (每 30 分钟刷新)
+  source_id: `tencent`
+
+- **腾讯新闻** / 综合早报 — https://news.qq.com/tag/aEWqxLtdgmQ=  [hottest]  (每 30 分钟刷新)
+  source_id: `tencent-hot`
+
+- **Freebuf** / 网络安全 — https://www.freebuf.com/  [hottest]  (每 10 分钟刷新)
+  source_id: `freebuf`
+
+- **腾讯视频** / 热搜榜 — https://v.qq.com/channel/tv  [hottest]  (每 30 分钟刷新)
+  source_id: `qqvideo`
+
+- **腾讯视频** / 热搜榜 — https://v.qq.com/channel/tv  [hottest]  (每 30 分钟刷新)
+  source_id: `qqvideo-tv-hotsearch`
+
+- **爱奇艺** / 热播榜 — https://www.iqiyi.com  [hottest]  (每 30 分钟刷新)
+  source_id: `iqiyi`
+
+- **爱奇艺** / 热播榜 — https://www.iqiyi.com  [hottest]  (每 30 分钟刷新)
+  source_id: `iqiyi-hot-ranklist`
+
+## tech
+
+- **YouTube** — https://www.youtube.com  [hottest]  (每 10 分钟刷新)
+  source_id: `youtube`
+
+- **V2EX** / 最新分享 — https://v2ex.com/  (每 10 分钟刷新)
+  source_id: `v2ex`
+
+- **V2EX** / 最新分享 — https://v2ex.com/  (每 10 分钟刷新)
+  source_id: `v2ex-share`
+
+- **酷安** / 今日最热 — https://coolapk.com  [hottest]  (每 10 分钟刷新)
+  source_id: `coolapk`
+
+- **36氪** / 快讯 — https://36kr.com  [realtime]  (每 10 分钟刷新)
+  source_id: `36kr`
+
+- **36氪** / 快讯 — https://36kr.com  [realtime]  (每 10 分钟刷新)
+  source_id: `36kr-quick`
+
+- **36氪** / 人气榜 — https://36kr.com  [hottest]  (每 10 分钟刷新)
+  source_id: `36kr-renqi`
+
+- **IT之家** — https://www.ithome.com  [realtime]  (每 10 分钟刷新)
+  source_id: `ithome`
+
+- **远景论坛** / Win11 — https://bbs.pcbeta.com  [realtime]  (每 5 分钟刷新)
+  source_id: `pcbeta`
+
+- **远景论坛** / Win11 — https://bbs.pcbeta.com  [realtime]  (每 5 分钟刷新)
+  source_id: `pcbeta-windows11`
+
+- **Solidot** — https://solidot.org  (每 60 分钟刷新)
+  source_id: `solidot`
+
+- **Hacker News** — https://news.ycombinator.com/  [hottest]  (每 10 分钟刷新)
+  source_id: `hackernews`
+
+- **Product Hunt** — https://www.producthunt.com/  [hottest]  (每 10 分钟刷新)
+  source_id: `producthunt`
+
+- **Github** / Today — https://github.com/  [hottest]  (每 10 分钟刷新)
+  source_id: `github`
+
+- **Github** / Today — https://github.com/  [hottest]  (每 10 分钟刷新)
+  source_id: `github-trending-today`
+
+- **少数派** — https://sspai.com  [hottest]  (每 10 分钟刷新)
+  source_id: `sspai`
+
+- **稀土掘金** — https://juejin.cn  [hottest]  (每 10 分钟刷新)
+  source_id: `juejin`
+
+## finance
+
+- **MKTNews** / 快讯 — https://mktnews.net  (每 2 分钟刷新)
+  source_id: `mktnews`
+
+- **MKTNews** / 快讯 — https://mktnews.net  (每 2 分钟刷新)
+  source_id: `mktnews-flash`
+
+- **华尔街见闻** / 快讯 — https://wallstreetcn.com/  [realtime]  (每 5 分钟刷新)
+  source_id: `wallstreetcn`
+
+- **华尔街见闻** / 快讯 — https://wallstreetcn.com/  [realtime]  (每 5 分钟刷新)
+  source_id: `wallstreetcn-quick`
+
+- **华尔街见闻** / 最新 — https://wallstreetcn.com/  (每 30 分钟刷新)
+  source_id: `wallstreetcn-news`
+
+- **华尔街见闻** / 最热 — https://wallstreetcn.com/  [hottest]  (每 30 分钟刷新)
+  source_id: `wallstreetcn-hot`
+
+- **财联社** / 电报 — https://www.cls.cn  [realtime]  (每 5 分钟刷新)
+  source_id: `cls`
+
+- **财联社** / 电报 — https://www.cls.cn  [realtime]  (每 5 分钟刷新)
+  source_id: `cls-telegraph`
+
+- **财联社** / 深度 — https://www.cls.cn  (每 10 分钟刷新)
+  source_id: `cls-depth`
+
+- **财联社** / 热门 — https://www.cls.cn  [hottest]  (每 10 分钟刷新)
+  source_id: `cls-hot`
+
+- **雪球** / 热门股票 — https://xueqiu.com  [hottest]  (每 2 分钟刷新)
+  source_id: `xueqiu`
+
+- **雪球** / 热门股票 — https://xueqiu.com  [hottest]  (每 2 分钟刷新)
+  source_id: `xueqiu-hotstock`
+
+- **格隆汇** / 事件 — https://www.gelonghui.com  [realtime]  (每 2 分钟刷新)
+  source_id: `gelonghui`
+
+- **法布财经** / 快讯 — https://www.fastbull.cn  [realtime]  (每 2 分钟刷新)
+  source_id: `fastbull`
+
+- **法布财经** / 快讯 — https://www.fastbull.cn  [realtime]  (每 2 分钟刷新)
+  source_id: `fastbull-express`
+
+- **法布财经** / 头条 — https://www.fastbull.cn  (每 30 分钟刷新)
+  source_id: `fastbull-news`
+
+- **金十数据** — https://www.jin10.com  [realtime]  (每 10 分钟刷新)
+  source_id: `jin10`
+
+## world
+
+- **联合早报** — https://www.zaobao.com  [realtime]  (每 30 分钟刷新)
+  source_id: `zaobao`
+
+- **卫星通讯社** — https://sputniknews.cn  (每 10 分钟刷新)
+  source_id: `sputniknewscn`
+
+- **参考消息** — https://china.cankaoxiaoxi.com  (每 30 分钟刷新)
+  source_id: `cankaoxiaoxi`
+
+- **靠谱新闻** — https://kaopu.news/  (每 30 分钟刷新)
+  source_id: `kaopu`
+
+- **Steam** / 在线人数 — https://store.steampowered.com  [hottest]  (每 10 分钟刷新)
+  source_id: `steam`
+
+
+## API 接入方式
+
+- 单源最新: `GET https://top.miyucaicai.cn/api/s?id={source_id}`
+- 多源拉取需配合鉴权（详见上游 README）
+
+## 站群矩阵
+
+- skill.miyucaicai.cn (AI Agent 技能商店, ⭐1762)
+- ai123.miyucaicai.cn (863 AI 工具导航)
+- solar.miyucaicai.cn (990 光伏储能项目)
+- ai-trend-publish.vercel.app (内容生产平台，使用本站数据)
+- TOPGO Platform (AI 资源管理: github.com/anbeime/api-token)
